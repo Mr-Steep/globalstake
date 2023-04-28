@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+  webpack: (config, { isServer }) => {
+    config.module.rules.push({
+      test: /\.html$/,
+      loader: 'html-loader'
+    });
+
+    return config;
+  }
+};
